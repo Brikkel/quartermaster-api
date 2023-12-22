@@ -1,0 +1,89 @@
+openapi: 3.0.2
+info:
+  contact:
+    email: rik.van.brakel@sue.nl
+  description: |-
+    This is the API design of the K8S quartermaster tool, the goal is to effectively obtain K8S resources, which can then be used for YAML configurations or other pruposes.
+
+    Some useful links:
+    - [Swagger](https://swagger.io/)
+    - [Kubernetes](https://kubernetes.io/docs/concepts/configuration/)
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://sue.nl
+  title: Swagger K8S Quartermaster - OpenAPI 3.0
+  version: 0.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: /v3
+tags:
+- description: Kind related endpoints
+  externalDocs:
+    description: Find out more
+    url: http://k8s.io
+  name: kinds
+paths:
+  /kinds:
+    get:
+      description: Returns a map of status codes to quantities
+      operationId: getKinds
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Kinds'
+                type: array
+          description: successful operation
+      summary: Returns pet inventories by status
+      tags:
+      - kinds
+      x-swagger-router-controller: OrderController
+components:
+  requestBodies:
+    Kinds:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Kinds'
+      description: Pet object that needs to be added to the store
+  schemas:
+    Kinds:
+      example:
+        apiVersionPath: api/v1
+        kinds:
+        - name: pod
+          description: this is a pod
+          type: object
+        - name: pod
+          description: this is a pod
+          type: object
+      properties:
+        apiVersionPath:
+          example: api/v1
+          type: string
+        kinds:
+          items:
+            $ref: '#/components/schemas/Kind'
+          type: array
+      required:
+      - apiVersionPath
+    Kind:
+      example:
+        name: pod
+        description: this is a pod
+        type: object
+      properties:
+        name:
+          example: pod
+          type: string
+        description:
+          example: this is a pod
+          type: string
+        type:
+          example: object
+          type: string

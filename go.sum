@@ -1,0 +1,4 @@
+github.com/brikkel/k8s-api-spec v0.0.0-20231221224133-7d5e631b39b9 h1:+i1BkjVWSl8Sri7gslUsdwoODZ16hGLDfNyjvbjX5FQ=
+github.com/brikkel/k8s-api-spec v0.0.0-20231221224133-7d5e631b39b9/go.mod h1:sVRNjcbwBUi82PVsjiOHOhaHuqh6YyqFb5uAvq+eM8U=
+github.com/go-chi/chi/v5 v5.0.8 h1:lD+NLqFcAi1ovnVZpsnObHGW4xb4J8lNmoYVfECH1Y0=
+github.com/go-chi/chi/v5 v5.0.8/go.mod h1:DslCQbL2OYiznFReuXYUmQ2hGd1aDpCnlMNITLSKoi8=
