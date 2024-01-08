@@ -33,9 +33,6 @@ func NewKindsAPIService() KindsAPIServicer {
 func (s *KindsAPIService) GetKinds(ctx context.Context) (ImplResponse, error) {
 	// TODO - update GetKinds with the required logic for this service method.
 	// Add api_kinds_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, []Kinds{}) or use other options such as http.Ok ...
-	// return Response(200, []Kinds{}), nil
 	myKinds, err := quartermaster.GetAllKinds("http://localhost:8001")
 	if err != nil {
 		return Response(http.StatusInternalServerError, nil), err

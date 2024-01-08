@@ -9,8 +9,8 @@ info:
     - [Swagger](https://swagger.io/)
     - [Kubernetes](https://kubernetes.io/docs/concepts/configuration/)
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    name: Rights reserved
+    url: http:/www.sue.nl
   termsOfService: https://sue.nl
   title: Swagger K8S Quartermaster - OpenAPI 3.0
   version: 0.0.1
@@ -18,13 +18,18 @@ externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
 servers:
-- url: /v3
+- url: http://localhost:8080/v3
 tags:
 - description: Kind related endpoints
   externalDocs:
     description: Find out more
     url: http://k8s.io
   name: kinds
+- description: Resource endpoints
+  externalDocs:
+    description: Find out more
+    url: http://k8s.io
+  name: resource
 paths:
   /kinds:
     get:
@@ -42,7 +47,39 @@ paths:
       summary: Returns pet inventories by status
       tags:
       - kinds
-      x-swagger-router-controller: OrderController
+  /parameters/{versionPath}/{fullResourceName}:
+    get:
+      description: Returns a list of paramaters of a given resource
+      operationId: getParameters
+      parameters:
+      - description: full name of the resource
+        explode: false
+        in: path
+        name: fullResourceName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: path to the api version
+        explode: false
+        in: path
+        name: versionPath
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Resource'
+                type: array
+          description: successful operation
+      summary: Gives parameters of a resource
+      tags:
+      - resource
 components:
   requestBodies:
     Kinds:
@@ -86,4 +123,111 @@ components:
           type: string
         type:
           example: object
+          type: string
+    Resource:
+      example:
+        Path: ""
+        Type: ""
+        Description: ""
+        Parameters:
+        - Type: object
+          Description: this is a container
+          Required: false
+          Items:
+          - Type: ""
+            ResourceReference: ""
+            Default: ""
+          - Type: ""
+            ResourceReference: ""
+            Default: ""
+          ResourceReference: ""
+          Default: ""
+          Name: container
+        - Type: object
+          Description: this is a container
+          Required: false
+          Items:
+          - Type: ""
+            ResourceReference: ""
+            Default: ""
+          - Type: ""
+            ResourceReference: ""
+            Default: ""
+          ResourceReference: ""
+          Default: ""
+          Name: container
+        FullResourceName: ""
+        Name: ""
+      properties:
+        FullResourceName:
+          example: ""
+          type: string
+        Path:
+          example: ""
+          type: string
+        Name:
+          example: ""
+          type: string
+        Description:
+          example: ""
+          type: string
+        Type:
+          example: ""
+          type: string
+        Parameters:
+          items:
+            $ref: '#/components/schemas/Parameter'
+          type: array
+    Parameter:
+      example:
+        Type: object
+        Description: this is a container
+        Required: false
+        Items:
+        - Type: ""
+          ResourceReference: ""
+          Default: ""
+        - Type: ""
+          ResourceReference: ""
+          Default: ""
+        ResourceReference: ""
+        Default: ""
+        Name: container
+      properties:
+        Name:
+          example: container
+          type: string
+        Description:
+          example: this is a container
+          type: string
+        Type:
+          example: object
+          type: string
+        Required:
+          example: false
+          type: boolean
+        Default:
+          example: ""
+          type: string
+        ResourceReference:
+          example: ""
+          type: string
+        Items:
+          items:
+            $ref: '#/components/schemas/Item'
+          type: array
+    Item:
+      example:
+        Type: ""
+        ResourceReference: ""
+        Default: ""
+      properties:
+        Default:
+          example: ""
+          type: string
+        ResourceReference:
+          example: ""
+          type: string
+        Type:
+          example: ""
           type: string

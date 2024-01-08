@@ -17,14 +17,14 @@ To see how to make this your own, look here:
 [README](https://openapi-generator.tech)
 
 - API version: 0.0.1
-- Build date: 2023-12-21T14:54:48.488091500+01:00[Europe/Amsterdam]
+- Build date: 2024-01-08T14:53:32.060699900+01:00[Europe/Amsterdam]
 
 
 ### Running the server
 To run the server, follow these simple steps:
 
 ```
-go run .
+go run main.go
 ```
 
 To run the server in a docker container

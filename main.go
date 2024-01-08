@@ -14,7 +14,7 @@ import (
 	"log"
 	"net/http"
 
-	openapi "github.com/brikkel/quartermaster-api/go"
+	openapi "github.com/GIT_USER_ID/GIT_REPO_ID/go"
 )
 
 func main() {
@@ -23,7 +23,10 @@ func main() {
 	KindsAPIService := openapi.NewKindsAPIService()
 	KindsAPIController := openapi.NewKindsAPIController(KindsAPIService)
 
-	router := openapi.NewRouter(KindsAPIController)
+	ResourceAPIService := openapi.NewResourceAPIService()
+	ResourceAPIController := openapi.NewResourceAPIController(ResourceAPIService)
+
+	router := openapi.NewRouter(KindsAPIController, ResourceAPIController)
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
