@@ -15,6 +15,7 @@ import (
 	"net/http"
 
 	openapi "github.com/GIT_USER_ID/GIT_REPO_ID/go"
+	"github.com/rs/cors"
 )
 
 func main() {
@@ -28,5 +29,13 @@ func main() {
 
 	router := openapi.NewRouter(KindsAPIController, ResourceAPIController)
 
-	log.Fatal(http.ListenAndServe(":8080", router))
+	// CORS middleware allowing requests from any origin
+	c := cors.New(cors.Options{
+		AllowedOrigins: []string{"*"},
+		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders: []string{"*"},
+	})
+	handler := c.Handler(router)
+
+	log.Fatal(http.ListenAndServe(":8080", handler))
 }

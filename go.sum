@@ -2,3 +2,5 @@ github.com/brikkel/k8s-api-spec v0.0.0-20240108135410-0bb882b45e5f h1:8PCwCDSbbx
 github.com/brikkel/k8s-api-spec v0.0.0-20240108135410-0bb882b45e5f/go.mod h1:c9eKcKiuXuM2PAj/D/G89YQriPaAyEVy5sQLyGqTp5o=
 github.com/go-chi/chi/v5 v5.0.8 h1:lD+NLqFcAi1ovnVZpsnObHGW4xb4J8lNmoYVfECH1Y0=
 github.com/go-chi/chi/v5 v5.0.8/go.mod h1:DslCQbL2OYiznFReuXYUmQ2hGd1aDpCnlMNITLSKoi8=
+github.com/rs/cors v1.10.1 h1:L0uuZVXIKlI1SShY2nhFfo44TYvDPQ1w4oFkUJNfhyo=
+github.com/rs/cors v1.10.1/go.mod h1:XyqrcTp5zjWr1wsJ8PIRZssZ8b/WMcMf71DJnit4EMU=
